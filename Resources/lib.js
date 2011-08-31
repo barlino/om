@@ -1,38 +1,48 @@
-function loadjson(url, onSuccess, onFail) {
-	var indicator = Ti.UI.createActivityIndicator({
-		height: 50,
-		widtg: 10,
-		message: 'Loading...',
-		color: '#FFF'
-	});
-	indicator.show();
-	var xhr = Ti.Network.createHTTPClient();
-	xhr.onload = function() {
-		indicator.hide();
-		if (this.readyState == 4) {
-			if(this.status == 200) {
-				var json = JSON.parse(this.responseText);
-				if (typeof onSuccess == 'function')
-					onSuccess.call(this, json);
-			} else { 
-			  	alert({title:'Code', message: this.status});
-				if (typeof onFail == 'function')
-					onFail.call(this);
+(function(ns){
+	ns.utils = {};
+	ns.utils.network = {};
+	ns.utils.network.loadjson = loadjson;
+
+	function loadjson(url, onSuccess, onFail) {
+		var indicator = Ti.UI.createActivityIndicator({
+			height: 50,
+			widtg: 10,
+			message: 'Loading...',
+			color: '#FFF'
+		});
+		indicator.show();
+		var xhr = Ti.Network.createHTTPClient();
+		xhr.onload = function() {
+			indicator.hide();
+			if (this.readyState == 4) {
+				if(this.status == 200) {
+					var json = JSON.parse(this.responseText);
+					if (typeof onSuccess == 'function')
+						onSuccess.call(this, json);
+				} else { 
+				  	alert({title:'Code', message: this.status});
+					if (typeof onFail == 'function')
+						onFail.call(this);
+				}
 			}
+			
 		}
-		
-	}
-	xhr.onerror = function() {
-		indicator.hide();
-		alert({title:'Code', message: this.status});
-		if (typeof onFail == 'function')
-			onFail.call(this);
+		xhr.onerror = function() {
+			indicator.hide();
+			alert({title:'Code', message: this.status});
+			if (typeof onFail == 'function')
+				onFail.call(this);
+		}
+	
+		xhr.open('GET', url);
+		xhr.send();
+	
 	}
 
-	xhr.open('GET', url);
-	xhr.send();
 
-}
+})(omusic);
+
+
 
 function alert(config, onOk) {
 	var alertDialog = Titanium.UI.createAlertDialog({

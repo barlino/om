@@ -1,4 +1,4 @@
-(function(){
+(function(ns){
 	ns.helper = {};
 	ns.helper.songs2Data = function(songs) {
 		var data = [];
@@ -101,4 +101,4 @@
 		  return data;
 		
 	};
-})();
+})(omusic);

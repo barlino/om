@@ -1,4 +1,4 @@
-(function(){
+(function(ns){
 	ns.ui = {};
 	ns.ui.createTableMoreView = function(config) {
 		var loadData = true;
@@ -26,7 +26,7 @@
 		{
 			if (loadData) {
 				var start = rows.length;
-				loadjson('http://music.fetnet.net/api.php?action=getDailySong&start=' + start, function(json){
+				ns.utils.network.loadjson('http://music.fetnet.net/api.php?action=getDailySong&start=' + start, function(json){
 					var data = ns.helper.songs2Data(json.result);
 					var len = data.length;
 					for (var i=0; i < len; i++) {
@@ -66,7 +66,7 @@
 		{
 			if (loadData) {
 				var start = rows.length;
-				loadjson('http://music.fetnet.net/api.php?action=queryAlbum&start=' + start, function(json){
+				ns.utils.network.loadjson('http://music.fetnet.net/api.php?action=queryAlbum&start=' + start, function(json){
 					var data = ns.helper.albums2Data(json.result);
 					var len = data.length;
 					for (var i=0; i < len; i++) {
@@ -79,4 +79,4 @@
 		});
 		return instance;	
 	};
-})();
+})(omusic);
