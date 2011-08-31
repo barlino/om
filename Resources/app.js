@@ -1,3 +1,4 @@
+//namespace and config
 var omusic = {
 	osname: Ti.Platform.osname,
 	isiOS: Ti.Platform.osname === 'iphone',
@@ -5,17 +6,15 @@ var omusic = {
 };
 
 Titanium.UI.setBackgroundColor('#000');
-//global
-Ti.include('global.js');
 //utils
-Ti.include('lib.js');
-//ui
-Ti.include('ui.js');
-Ti.include('helper.js');
+Ti.include('utils.js');
 //view
+Ti.include('ui.js');
+//controller
 Ti.include('hottest.js');
 Ti.include('latest.js');
 
+//main
 (function(ns){
 	ns.tabGroup = Titanium.UI.createTabGroup();
 	

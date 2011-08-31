@@ -4,12 +4,12 @@
 	    backgroundColor: '#fff',
 	});
 	
-	ns.hottestTable = ns.ui.createTableMoreView({
+	ns.hottestTable = ns.ui.component.createTableMoreView({
 		backgroundColor: 'transparent',
 	});
 	
 	ns.utils.network.loadjson('http://music.fetnet.net/api.php?action=getDailySong', function(json){
-		rows = ns.helper.songs2Data(json.result);
+		rows = ns.ui.helper.songs2Data(json.result);
 		ns.hottestTable.setData(rows);
 		ns.winHottest.add(ns.hottestTable);
 	});

@@ -1,6 +1,5 @@
 (function(ns){
-	ns.helper = {};
-	ns.helper.songs2Data = function(songs) {
+	ns.ui.helper.songs2Data = function(songs) {
 		var data = [];
 		for (var i=0; i < songs.length; i++) {
 			var song = songs[i];
@@ -58,7 +57,7 @@
 		};
 		return data;
 	};
-	ns.helper.albums2Data = function(albums){
+	ns.ui.helper.albums2Data = function(albums){
 		var data = [];
 		for (var i=0; i < albums.length; i++) {
 		    var album = albums[i];
