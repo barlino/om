@@ -26,7 +26,7 @@
 			if (loadData) {
 				var start = rows.length;
 				ns.utils.network.loadjson('http://music.fetnet.net/api.php?action=getDailySong&start=' + start, function(json){
-					var data = ns.helper.ui.songs2Data(json.result);
+					var data = ns.ui.helper.songs2Data(json.result);
 					var len = data.length;
 					for (var i=0; i < len; i++) {
 						rows.push(data[i]);
