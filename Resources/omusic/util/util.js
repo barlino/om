@@ -44,9 +44,9 @@
 	
 	om.util.alert = function(config, onOk) {
 		var alertDialog = Titanium.UI.createAlertDialog({
-	    title: config.title || '',
-	    message: config.message,
-	    buttonNames: ['OK'],
+	    		title: config.title || '',
+	    		message: config.message,
+	    		buttonNames: ['OK'],
 		});
 		alertDialog.addEventListener('click', function(e){
 			if (typeof onOk == 'function')
@@ -77,5 +77,6 @@
 })();
 
 Ti.include(
-	'../../omusic/util/ajax.js'	
+	'../../omusic/util/ajax.js',
+    '../../omusic/util/qrcode.js'
 );

@@ -50,7 +50,6 @@
 	     	width: 135
 	    });
 	    row.add(artistTitle);
-	    
 		return row;
 	
 	};
@@ -96,5 +95,7 @@
 Ti.include(
 	'../../omusic/ui/ApplicationWindow.js',
 	'../../omusic/ui/HotWindow.js',
-	'../../omusic/ui/LatestWindow.js'	
+	'../../omusic/ui/LatestWindow.js',
+	'../../omusic/ui/QRCodeWindow.js',
+	'../../omusic/ui/QRCodeView.js'	
 );

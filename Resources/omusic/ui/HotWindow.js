@@ -8,6 +8,33 @@
 		var table = Ti.UI.createTableView({
 			backgroundColor: 'transparent',
 		});
+        
+        table.addEventListener('click', function(e){
+        		if (e.row.className == 'subMenu') {
+        			table.deleteRow(e.index, {
+	            		animationStyle:Titanium.UI.iPhone.RowAnimationStyle.TOP
+	            	});
+	            	
+	            e.row.parentRow.subMenuOpen = false;
+	            	//table.updateRow(e.row.parentRow, {});
+        		} else { 
+        		
+        			if (e.row.subMenuOpen) return;
+        			
+	            var _row = Ti.UI.createTableViewRow({
+	            		title: 'Sub Menu', hasDetail: true, className: 'subMenu',
+	            		parentRow: e.row
+	            	});
+	            
+	            table.insertRowAfter(e.index, _row, {
+	            		animationStyle:Titanium.UI.iPhone.RowAnimationStyle.BOTTOM
+	            	});
+	            	
+	            	e.row.subMenuOpen = true;
+	            	
+	            	// table.updateRow(e.row, {});
+	            }
+        });
 		
 		om.util.loadjson('http://music.fetnet.net/api.php?action=getDailySong', function(json){
 			var songs = json.result;

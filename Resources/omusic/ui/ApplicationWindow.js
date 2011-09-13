@@ -16,9 +16,16 @@
 	    		title: 'Latest',
 			window: om.ui.createLatestWindow()
 		});
+		
+		var tabQRCode = Titanium.UI.createTab({  
+	    		icon: 'images/KS_nav_views.png',
+	    		title: 'QRCode',
+			window: om.ui.createQRCodeWindow()
+		});
 	
 		tabs.addTab(tabHot);  
-		tabs.addTab(tabLatest);  
+		tabs.addTab(tabLatest); 
+		tabs.addTab(tabQRCode); 
 		tabs.open();
 		
 		win.add(tabs);
