@@ -5,7 +5,7 @@
 			backgroundColor: '#fff'
 		});
 		
-		var qrCodeImage = om.ui.createQRCodeImageView('Barlino Yeh', om.ui.QRCodeSize1);
+		var qrCodeImage = om.ui.createQRCodeImageView('Barlino Yeh', om.ui.QRCodeSize_200);
 		win.add(qrCodeImage);
 		
 		var btnScan = Ti.UI.createButton({
@@ -16,20 +16,23 @@
 		});
 		win.add(btnScan);
 		
-		var TiBar = require('tibar');
 		btnScan.addEventListener('click', function(){
-			om.util.QRCodeReader({
-				//classType: "ZBarReaderViewController",
-            		//sourceType: "Camera"
-			}, function(data){
-				if(data && data.barcode){
-	                om.util.alert({
-	                    title: "Scan result",
-	                    message: "Barcode: " + data.barcode
-	                });
-	            }
-				
-			});    
+			if (Ti.Platform.osname === 'android') {
+				//TODO...
+			} else {
+				om.util.QRCodeReader({
+					//classType: "ZBarReaderViewController",
+	            		//sourceType: "Camera"
+				}, function(data){
+					if(data && data.barcode){
+		                om.util.alert({
+		                    title: "Scan result",
+		                    message: "Barcode: " + data.barcode
+		                });
+		            }
+					
+				});  
+			}  
     		});        
 		
 		return win;

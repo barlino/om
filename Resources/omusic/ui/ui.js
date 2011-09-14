@@ -97,5 +97,6 @@ Ti.include(
 	'../../omusic/ui/HotWindow.js',
 	'../../omusic/ui/LatestWindow.js',
 	'../../omusic/ui/QRCodeWindow.js',
-	'../../omusic/ui/QRCodeView.js'	
+	'../../omusic/ui/QRCodeView.js',
+	'../../omusic/ui/RatingView.js'	
 );

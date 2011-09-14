@@ -22,10 +22,29 @@
 	    		title: 'QRCode',
 			window: om.ui.createQRCodeWindow()
 		});
+		
+		var w = Ti.UI.createWindow();
+			
+		var ratingView = om.ui.createRatingView(3.5, 6);
+		ratingView.top = 10;
+		ratingView.left = 30;
+
+		w.add(ratingView);
+
+		var tabRating = Titanium.UI.createTab({  
+	    		icon: 'images/KS_nav_views.png',
+	    		title: 'Rating',
+			window: w
+		});
+
+		ratingView.addEventListener('ratingChanged', function(e) {
+			// a	lert(e.currentValue);
+		});
 	
 		tabs.addTab(tabHot);  
 		tabs.addTab(tabLatest); 
-		tabs.addTab(tabQRCode); 
+		tabs.addTab(tabQRCode);
+		tabs.addTab(tabRating); 
 		tabs.open();
 		
 		win.add(tabs);
