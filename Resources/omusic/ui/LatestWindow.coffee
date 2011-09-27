@@ -8,17 +8,19 @@ om.ui.createLatestWindow = (_args) ->
 		backgroundColor: 'transparent'
 	)
 	
-	om.util.loadjson('http://music.fetnet.net/api.php?action=queryAlbum', (json) ->
-		albums = json.result
-		data = []
+	om.util.ajax(
+		url: 'http://music.fetnet.net/api.php?action=queryAlbum'
+		success: (json) ->
+			albums = json.result
+			data = []
 
-		for i in [0...albums.length]
-			album = albums[i]
-			row = om.ui.createAlbumRow(album)
-			data.push row
+			for i in [0...albums.length]
+				album = albums[i]
+				row = om.ui.createAlbumRow(album)
+				data.push row
 
-		table.setData data
-	)
+			table.setData data
+	)	
 	
 	win.add table
 	return win

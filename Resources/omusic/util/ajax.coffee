@@ -1,46 +1,68 @@
-om.util.loadjson = (url, onSuccess, onFail) ->
-	win = Ti.UI.createWindow(
-		backgroundColor: '#000'
-		opacity: 0.5
-	)
+om.util.ajax = (_setting) ->
+	# Merge with defaut props
+	setting = 
+		method: 'GET'
+		url: null
+		data: false
+		contentType: 'application/json'
+		timeout: 15000
+		
+		# Ti API Options
+		async: true
+		autoEncodeUrl: true
+		
+		# Callbacks
+		success: null
+		error: null
+		beforeSend: null
+		afterSend: null
 	
-	indicator = Ti.UI.createActivityIndicator(
-		height: 50
-		widtg: 10
-		message: 'Loading...'
-		color: '#FFF'
-		style: Ti.UI.iPhone.ActivityIndicatorStyle.BIG
-	)
-	indicator.show()
-	win.add(indicator)
-	
-	xhr = Ti.Network.createHTTPClient(
-		timeout:5000
-	)
+	setting = om.combine setting, _setting
+	om.util.logger.info(setting)
+
+	om.util.logger.info "XHR " + setting.method + ": \n" + setting.url
+	xhr = Ti.Network.createHTTPClient
+		autoEncodeUrl: setting.autoEncodeUrl
+		async: setting.async
+		timeout: setting.timeout
+
+	# URL
+	xhr.open(setting.method, setting.url)
+
+	# Request header
+	xhr.setRequestHeader('Content-Type', setting.contentType)
+
+	setting.beforeSend.call(@) if typeof setting.beforeSend is 'function'
+
+	# Errors
+	xhr.onerror = ->
+		om.util.logger.error '[XHR:error][' + @status + ']: ' + @responseText
+		if typeof setting.error is 'function'
+			setting.error.call(@)
+
+	# Success
 	xhr.onload = ->
-		indicator.hide()
-		win.close()
+		# om.util.logger.info '[XHR][' + @status + ']: ' + @responseText
+			
 		if @readyState is 4
 			if @status is 200
-				json = JSON.parse @responseText
-				onSuccess.call(@, json) if typeof onSuccess is 'function'
+				try
+					json = JSON.parse @responseText
+					setting.success.call(@, json) if typeof setting.success is 'function'
+				catch e
+					om.util.logger.error('[XHR]Exception: ' + e);
 			else
-				om.ui.alert(
-					title:'Code'
-					message: @status
-				)
-				onFail.call(@) if typeof onFail is 'function'
-					
-	xhr.onerror = ->
-		indicator.hide()
-		win.close()
-		om.ui.alert(
-			title:'Code'
-			message: @status
-		)
-		onFail.call(@) if typeof onFail is 'function'
+				om.util.logger.error '[XHR][' + @status + ']: ' + @responseText
+				setting.error.call(@) if typeof setting.error is 'function'
+    
+	# Send
+	if setting.data isnt null
+		om.util.logger.info(setting.data)
+		xhr.setRequestHeader 'Content-Type', 'application/x-www-form-urlencoded'
+		xhr.send setting.data
+	else
+		xhr.send()
 
-	xhr.open('GET', url)
-	xhr.send()
-	win.open()
-	return false
+	setting.afterSend.call(@) if typeof setting.afterSend is 'function'
+
+

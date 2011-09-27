@@ -34,16 +34,17 @@ om.ui.createHotWindow = (_args) ->
 
 			# table.updateRow(e.row, {});
 	)
-	
-	om.util.loadjson('http://music.fetnet.net/api.php?action=getDailySong', (json) ->
-		songs = json.result
-		data = []
-		for i in [0...songs.length]
-			song = songs[i]
-			row = om.ui.createSongRow(song)
-			data.push row
+	om.util.ajax(
+		url: 'http://music.fetnet.net/api.php?action=getDailySong',
+		success: (json) ->
+			songs = json.result
+			data = []
+			for i in [0...songs.length]
+				song = songs[i]
+				row = om.ui.createSongRow(song)
+				data.push row
 		
-		table.setData(data)
+			table.setData(data)
 	)
 	
 	win.add table

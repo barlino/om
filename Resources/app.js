@@ -1,5 +1,5 @@
-//namespace and config
-var omusic = {
+//All application functionality is namespaced here
+var om = {
 	osname: Ti.Platform.osname,
 	isiOS: Ti.Platform.osname === 'iphone',
 	isAndroid: Ti.Platform.osname === 'android'

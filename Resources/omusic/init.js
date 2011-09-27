@@ -1,5 +1,3 @@
-//All application functionality is namespaced here
-var om = {};
 (function() {
 	//application state variables are held in this namespace.  
 	//Like the current app window, for instance, which is created in app.js
@@ -72,9 +70,15 @@ var om = {};
 	};
 })();
 
+//initalal
+om.ui = {};
+om.util = {};
+om.util.logger = {};
+
 //Include additional namespaces
 Ti.include(
 	'../omusic/ui/ui.js',
 	'../omusic/util/util.js'
 	// '/tweetanium/config/config.js'
 );
+om.util.logger.info('load init.js');
