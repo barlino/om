@@ -70,7 +70,7 @@
 	};
 })();
 
-//initalal
+//initialal
 om.ui = {};
 om.util = {};
 om.util.logger = {};
@@ -81,4 +81,3 @@ Ti.include(
 	'../omusic/util/util.js'
 	// '/tweetanium/config/config.js'
 );
-om.util.logger.info('load init.js');

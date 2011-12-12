@@ -2,3 +2,15 @@ tmp
 build*
 .DS_Store
 .fastdev.lock
+Resources/omusic/util/console.js
+Resources/omusic/ui/ApplicationWindow.js
+Resources/omusic/ui/QRCodeView.js
+Resources/omusic/ui/QRCodeWindow.js
+Resources/omusic/util/ajax.js
+Resources/omusic/util/console.js
+Resources/omusic/util/qrcode.js
+Resources/omusic/ui/RatingView.js
+Resources/omusic/ui/LatestWindow.js
+Resources/omusic/ui/HotWindow.js
+Resources/omusic/init.js
+Resources/omusic/ui/ui.js

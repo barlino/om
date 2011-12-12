@@ -52,7 +52,7 @@ om.ui.createSongRow = (_song) ->
 		backgroundColor:'#eee'
 		data: _song
 	)
-    
+
 	wrapperView = Ti.UI.createView(
 		borderColor: '#000'
 		width: 82
@@ -92,7 +92,7 @@ om.ui.createSongRow = (_song) ->
 		width: 135
 	)
 	row.add artistTitle
-	
+	return row
 
 om.ui.createAlbumRow = (_album) ->
 	row = Ti.UI.createTableViewRow(
@@ -127,6 +127,7 @@ om.ui.createAlbumRow = (_album) ->
 		width: 135
 	)
 	row.add albumTitle
+	return row
 	
 Ti.include(
 	'../../omusic/ui/ApplicationWindow.js',

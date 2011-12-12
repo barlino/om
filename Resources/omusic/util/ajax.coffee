@@ -5,7 +5,7 @@ om.util.ajax = (_setting) ->
 		url: null
 		data: false
 		contentType: 'application/json'
-		timeout: 15000
+		timeout: 20000
 		
 		# Ti API Options
 		async: true
