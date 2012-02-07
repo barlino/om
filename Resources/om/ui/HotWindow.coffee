@@ -42,7 +42,7 @@ om.ui.createHotWindow = (_args) ->
 			)
 			
 			thumbAlbum = om.util.findElement(e.source.parent, "thumbAlbum")
-			m = Titanium.UI.create3DMatrix()
+			m = Titanium.UI.iOS.create3DMatrix()
 			m = m.rotate(200,0,200,1);
 			thumbAlbum.animate({
 				duration: 1000
