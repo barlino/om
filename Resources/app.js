@@ -7,6 +7,6 @@ var om = {
 
 Titanium.UI.setBackgroundColor('#000');
 
-Ti.include('omusic/init.js');
+Ti.include('om/init.js');
 om.app.mainWindow = om.ui.createApplicationWindow();
 om.app.mainWindow.open();

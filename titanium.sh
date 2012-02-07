@@ -2,9 +2,9 @@
 
 PROJECT_ROOT="${PROJECT_ROOT}"
 APP_DEVICE=${DEVICE_TYPE}
-IPHONE_SDK_VERSION="4.3"
-TI_SDK_VERSION="1.8.0"
-TI_DIR="/Library/Application\ Support/Titanium"
+IPHONE_SDK_VERSION="5.0"
+TI_SDK_VERSION=`cat "${PROJECT_ROOT}/tiapp.xml" | grep "<sdk-version>" | sed -e "s/<\/*sdk-version>//g" | sed 's/^ *//g' | sed 's/ *$//g'`
+TI_DIR="~/Library/Application\ Support/Titanium"
 TI_ASSETS_DIR="${TI_DIR}/mobilesdk/osx/${TI_SDK_VERSION}"
 TI_IPHONE_DIR="${TI_ASSETS_DIR}/iphone"
 TI_BUILD="${TI_IPHONE_DIR}/builder.py"

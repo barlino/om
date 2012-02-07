@@ -1,8 +1,8 @@
-#appname: omusic_android
-#publisher: barlinoyeh@otiga.com
-#url: http://
-#image: appicon.png
-#appid: com.otiga.omusic.android
-#desc: undefined
-#type: mobile
-#guid: 481258fb-8cf2-4e6b-b25b-261d1ecc205e
+#appname:omusic_android
+#publisher:barlinoyeh@otiga.com
+#url:http://
+#image:appicon.png
+#appid:com.otiga.omusic
+#desc:not specified
+#type:mobile
+#guid:481258fb-8cf2-4e6b-b25b-261d1ecc205e
