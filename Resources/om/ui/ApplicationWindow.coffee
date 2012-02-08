@@ -24,7 +24,7 @@ om.ui.createApplicationWindow = (args) ->
 	)
 	
 	w = Ti.UI.createWindow()
-	ratingView = om.ui.createRatingView(3.5, 6)
+	ratingView = otiga.ui.createRatingView(3.5, 6)
 	ratingView.top = 10
 	ratingView.left = 30
 	
@@ -37,7 +37,7 @@ om.ui.createApplicationWindow = (args) ->
 	)
 			
 	ratingView.addEventListener('ratingChanged', (e) ->
-		alert(e.currentValue)
+		otiga.util.logger.info(e.currentValue)
 		false
 	)
 	

@@ -1,50 +1,3 @@
-om.ui.alert = (_setting) ->
-	setting = 
-		title: ''
-		message: ''
-		okLabel: 'OK'
-		ok: null
-		
-	setting = om.combine(setting, _setting)
-	alertDialog = Titanium.UI.createAlertDialog(
-		title: setting.title
-		message: setting.message
-		buttonNames: [setting.okLabel]
-	)
-	alertDialog.addEventListener 'click', (e) ->
-		if typeof setting.ok is 'function'
-			setting.ok.call()
-			
-	alertDialog.show()
-
-om.ui.confirm = (_setting) ->
-	setting = 
-		title: ''
-		message: ''
-		okLabel: 'OK'
-		cancelLabel: 'Cancel'
-		ok: null
-		cancel: null
-		cancelIndex: 1
-		
-	setting = om.combine(setting, _setting)
-	confirmDialog = Titanium.UI.createAlertDialog(
-		title: setting.title
-		message: setting.message,
-		buttonNames: [setting.cancelLabel, setting.okLabel]
-		cancel: 0
-	)
-	confirmDialog.addEventListener 'click', (e) ->
-		om.util.logger.info(e.type)
-		if e.cancel is e.index
-			if typeof setting.cancel is 'function'
-				setting.cancel.call(@)
-		else
-			if typeof setting.ok is 'function'
-				setting.ok.call(@)
-	confirmDialog.show()
-
-
 om.ui.createSongRow = (_song) ->
 	row = Ti.UI.createTableViewRow(
 		hasChild:true
@@ -131,10 +84,11 @@ om.ui.createAlbumRow = (_album) ->
 	return row
 
 Ti.include(
-	'../../om/ui/ApplicationWindow.js',
-	'../../om/ui/HotWindow.js',
-	'../../om/ui/LatestWindow.js',
-	'../../om/ui/QRCodeWindow.js',
-	'../../om/ui/QRCodeView.js',
-	'../../om/ui/RatingView.js'	
+	'../om/ui/ApplicationWindow.js',
+	'../om/ui/HotWindow.js',
+	'../om/ui/LatestWindow.js',
+	'../om/ui/QRCodeWindow.js',
+	'../otiga/ui/QRCodeView.js',
+	'../otiga/ui/RatingView.js',
+	'../otiga/ui/dialog.js'	
 );

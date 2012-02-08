@@ -1,4 +1,5 @@
-om.util.QRCodeReader = (_config, _success, _cancel) ->
+otiga = this.otiga;
+otiga.util.QRCodeReader = (_config, _success, _cancel) ->
 	TiBar = require('tibar')
 	# 	
 	# simple configuration for iPhone simulator
@@ -38,18 +39,18 @@ om.util.QRCodeReader = (_config, _success, _cancel) ->
 			"ISBN-10": false
 			"PDF417": false
 	
-	config = om.combine(config, _config)
+	config = otiga.combine(config, _config)
 
 	TiBar.scan(
 		configure: config
 		success: (data) ->
-			om.util.logger.info data
+			otiga.util.logger.info data
 			if data and data.barcode
-				om.util.logger.info "Barcode: " + data.barcode
+				otiga.util.logger.info "Barcode: " + data.barcode
 				_success(data) if typeof _success is 'function'
 		cancel: ->
-			om.util.logger.info 'TiBar cancel callback!'
+			otiga.util.logger.info 'TiBar cancel callback!'
 			_cancel.call() if typeof _cancel is 'function'
 		error: ->
-			om.util.logger.info 'TiBar error callback!'
+			otiga.util.logger.info 'TiBar error callback!'
 	)
