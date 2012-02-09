@@ -43,25 +43,17 @@ otiga.ui.createRatingView = (initialRating, max) ->
       use a closure (this self-calling function)
       ###
       index = i
-      star.addEventListener('click', ->
-        # setRating(index+1)
-      )
 
       star.addEventListener('touchstart', (e) ->
         setRating(e.source.id)
-        otiga.util.logger.debug(e)
       )
       star.addEventListener('touchmove', (e) ->
-        i = (e.globalPoint.x - firstStarLeftOffset - star.left ) / star.width
-        setRating(i)
+        rating = (e.globalPoint.x - firstStarLeftOffset - star.left ) / star.width
+        rating = rating.toFixed(1)
+        setRating(rating)
       )
       star.addEventListener('touchend', (e) ->
-        # setRating(e.source.id)
-        otiga.util.logger.debug(e)
       )  
-
-
-
       false
     )()
     

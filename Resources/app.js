@@ -5,7 +5,7 @@ var om = {
 
 
 Titanium.UI.setBackgroundColor('#000');
-Ti.include('otiga/bootstrap.js');
+Ti.include('otiga/otiga.js');
 Ti.include('om/init.js');
 
 om.mainWindow = om.ui.createApplicationWindow();
