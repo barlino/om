@@ -3,10 +3,13 @@ var om = {
     ui: {}
 };
 
-
 Titanium.UI.setBackgroundColor('#000');
 Ti.include('otiga/otiga.js');
-Ti.include('om/init.js');
+
+//Include additional namespaces
+Ti.include(
+    'om/ui.js'
+);
 
 
 

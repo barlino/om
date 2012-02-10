@@ -1,5 +1,3 @@
-platformWidth = Ti.Platform.displayCaps.platformWidth
-
 om.ui.createApplicationWindow = (args) ->
 	win = Ti.UI.createWindow()
 	AppTabGroup = require('otiga/ui/AppTabGroup').AppTabGroup
