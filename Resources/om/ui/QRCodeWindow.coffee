@@ -4,7 +4,8 @@ om.ui.createQRCodeWindow = (_args) ->
 		backgroundColor: '#fff'
 	)
 	
-	qrCodeImage = otiga.ui.createQRCodeImageView('Barlino Yeh', otiga.ui.QRCodeSize_200)
+	om.ui.QRCodeView = require('otiga/ui/QRCodeView')
+	qrCodeImage = om.ui.QRCodeView.createQRCodeImageView('Barlino Yeh', om.ui.QRCodeView.QRCodeSize_200)
 	win.add qrCodeImage
 	
 	btnScan = Ti.UI.createButton(
@@ -19,12 +20,12 @@ om.ui.createQRCodeWindow = (_args) ->
 		if Ti.Platform.osname is 'android'
 			#TODO...
 		else
-			otiga.util.QRCodeReader({
+			require('otiga/Util/qrcode').QRCodeReader({
 				#classType: "ZBarReaderViewController"
 				#sourceType: "Camera"
 			}, (data) ->
 				if data and data.barcode
-					otiga.ui.alert(
+					Otiga.UI.alert(
 						title: "Scan result"
 						message: "Barcode: " + data.barcode
 					)

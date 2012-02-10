@@ -1,10 +1,9 @@
-otiga = this.otiga
 ### 
 Our custom rating view component takes an initial
 rating, and a maximum value for the rating, which
 will be used to render the view
 ###
-otiga.ui.createRatingView = (initialRating, max) ->
+exports.createRatingView = (initialRating, max) ->
   #create and populate the rating object
   instance = Ti.UI.createView(
     layout:'horizontal'

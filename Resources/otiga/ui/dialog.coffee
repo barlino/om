@@ -1,12 +1,11 @@
-otiga = this.otiga;
-otiga.ui.alert = (_setting) ->
+exports.alert = (_setting) ->
   setting = 
     title: ''
     message: ''
     okLabel: 'OK'
     ok: null
     
-  setting = otiga.combine(setting, _setting)
+  setting = Otiga.combine(setting, _setting)
   alertDialog = Titanium.UI.createAlertDialog(
     title: setting.title
     message: setting.message
@@ -18,7 +17,7 @@ otiga.ui.alert = (_setting) ->
       
   alertDialog.show()
 
-otiga.ui.confirm = (_setting) ->
+exports.confirm = (_setting) ->
   setting = 
     title: ''
     message: ''
@@ -28,7 +27,7 @@ otiga.ui.confirm = (_setting) ->
     cancel: null
     cancelIndex: 1
     
-  setting = otiga.combine(setting, _setting)
+  setting = Otiga.combine(setting, _setting)
   confirmDialog = Titanium.UI.createAlertDialog(
     title: setting.title
     message: setting.message,
@@ -36,7 +35,7 @@ otiga.ui.confirm = (_setting) ->
     cancel: 0
   )
   confirmDialog.addEventListener 'click', (e) ->
-    otiga.util.logger.info(e.type)
+    Otiga.API.info(e.type)
     if e.cancel is e.index
       if typeof setting.cancel is 'function'
         setting.cancel.call(@)

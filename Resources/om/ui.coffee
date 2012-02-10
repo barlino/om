@@ -88,7 +88,8 @@ Ti.include(
 	'../om/ui/HotWindow.js',
 	'../om/ui/LatestWindow.js',
 	'../om/ui/QRCodeWindow.js',
-	'../otiga/ui/QRCodeView.js',
-	'../otiga/ui/RatingView.js',
-	'../otiga/ui/dialog.js'	
+	'../om/ui/RatingWindow.js',
+	# '../otiga/ui/QRCodeView.js',
+	# '../otiga/ui/RatingView.js',
+	# '../otiga/ui/dialog.js'	
 );

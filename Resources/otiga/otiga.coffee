@@ -1,22 +1,32 @@
 ###
 initialal
 ###
-otiga = 
-  ui : {}
-  util :
-    logger : {}
+Otiga = 
+  UI : 
+    alert : require('otiga/ui/dialog').alert
+    confirm : require('otiga/ui/dialog').confirm
 
-otiga.osname = Ti.Platform.osname
-otiga.isiOS = Ti.Platform.osname is 'iphone'
-otiga.isAndroid = Ti.Platform.osname is 'android'
-otiga.locale = Ti.Platform.locale
+  Util : {}
+  
+  Network :
+    ajax : require('otiga/network/ajax').ajax
+
+  API :
+    debug : require('otiga/api/logger').debug
+    warn : require('otiga/api/logger').warn
+    info : require('otiga/api/logger').info
+    error : require('otiga/api/logger').error
+    getConfig : require('otiga/api/property').getConfig
+    setConfig : require('otiga/api/property').setConfig
+
+  osname : Ti.Platform.osname
+  isiOS : Ti.Platform.osname is 'iphone'
+  isAndroid : Ti.Platform.osname is 'android'
+  locale : Ti.Platform.locale
 
 
-this.otiga = otiga
+this.Otiga = Otiga
 ###Common Utility Function ### 
 Ti.include(
-  '../otiga/util/extend.js',
-  '../otiga/util/property.js',
-  '../otiga/util/ajax.js',
-  '../otiga/util/logger.js'
+  '../otiga/Util/extend.js'
 );
