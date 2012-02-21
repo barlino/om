@@ -1,7 +1,7 @@
 Otiga = this.Otiga;
 om.ui.createHotWindow = (_args) ->
 	win = Ti.UI.createWindow(
-		title: 'Hot'
+		title: L('HotWindow.title')
 		backgroundColor: '#fff'
 	)
 	
