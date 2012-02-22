@@ -8,7 +8,7 @@ om.ui.createLatestWindow = (_args) ->
 		backgroundColor: 'transparent'
 	)
 	
-	Otiga.Network.ajax(
+	Otiga.ajax(
 		url: 'http://music.fetnet.net/api.php?action=queryAlbum'
 		success: (json) ->
 			albums = json.result

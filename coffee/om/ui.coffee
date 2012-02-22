@@ -84,7 +84,7 @@ om.ui.createAlbumRow = (_album) ->
 	return row
 
 Ti.include(
-	'../om/ui/ApplicationWindow.js',
+	# '../om/ui/ApplicationWindow.js',
 	'../om/ui/HotWindow.js',
 	'../om/ui/LatestWindow.js',
 	'../om/ui/QRCodeWindow.js',

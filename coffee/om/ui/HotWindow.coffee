@@ -1,4 +1,4 @@
-Otiga = this.Otiga;
+Otiga = this.Otiga
 om.ui.createHotWindow = (_args) ->
 	win = Ti.UI.createWindow(
 		title: L('HotWindow.title')
@@ -42,16 +42,16 @@ om.ui.createHotWindow = (_args) ->
 				parentRow: e.row
 			)
 			
-			thumbAlbum = Otiga.Util.findElement(e.source.parent, "thumbAlbum")
+			thumbAlbum = require('otiga/helpers/util').findElement(e.source.parent, "thumbAlbum")
 			m = Titanium.UI.iOS.create3DMatrix()
 			m = m.rotate(200,0,200,1);
 			thumbAlbum.animate({
 				duration: 1000
 				transform: m
 			})
-			Otiga.API.info thumbAlbum
+			Otiga.infoinfo thumbAlbum
 			song_id = e.row.data.song_id
-			Otiga.API.info "Demo URL: http://music.fetnet.net/demo/#{song_id}.3gp"
+			Otiga.info "Demo URL: http://music.fetnet.net/demo/#{song_id}.3gp"
 			# demo.php isiOS() ua !== 'iphone' 
 			_player = Titanium.Media.createVideoPlayer(
 				url: "http://music.fetnet.net/demo/#{song_id}.3gp"
@@ -61,7 +61,7 @@ om.ui.createHotWindow = (_args) ->
 			
 			_player.play()
 			# _player.addEventListener('playing', (e) ->
-			# 	Otiga.API.info e.type
+			# 	Otiga.info e.type
 			# )
 
 			table.insertRowAfter(selectedRowIndex, _row, 
@@ -80,7 +80,7 @@ om.ui.createHotWindow = (_args) ->
 				position: Ti.UI.iPhone.TableViewScrollPosition.MIDDLE
 			)
 	)
-	Otiga.Network.ajax(
+	Otiga.ajax(
 		url: 'http://music.fetnet.net/api.php?action=getDailySong'
 		success: (json) ->
 			songs = json.result

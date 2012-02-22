@@ -20,12 +20,12 @@ om.ui.createQRCodeWindow = (_args) ->
 		if Ti.Platform.osname is 'android'
 			#TODO...
 		else
-			require('otiga/Util/qrcode').QRCodeReader({
+			require('otiga/helpers/qrcode').QRCodeReader({
 				#classType: "ZBarReaderViewController"
 				#sourceType: "Camera"
 			}, (data) ->
 				if data and data.barcode
-					Otiga.UI.alert(
+					Otiga.alert(
 						title: "Scan result"
 						message: "Barcode: " + data.barcode
 					)

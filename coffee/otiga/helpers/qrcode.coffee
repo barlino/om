@@ -38,18 +38,18 @@ exports.QRCodeReader = (_config, _success, _cancel) ->
 			"ISBN-10": false
 			"PDF417": false
 	
-	config = Otiga.combine(config, _config)
+	config = require('otiga/helpers/util').mix config, _config
 
 	TiBar.scan(
 		configure: config
 		success: (data) ->
-			Otiga.API.info data
+			Otiga.info data
 			if data and data.barcode
-				Otiga.API.info "Barcode: " + data.barcode
+				Otiga.info "Barcode: " + data.barcode
 				_success(data) if typeof _success is 'function'
 		cancel: ->
-			Otiga.API.info 'TiBar cancel callback!'
+			Otiga.info 'TiBar cancel callback!'
 			_cancel.call() if typeof _cancel is 'function'
 		error: ->
-			Otiga.API.info 'TiBar error callback!'
+			Otiga.info 'TiBar error callback!'
 	)

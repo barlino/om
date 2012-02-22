@@ -10,6 +10,6 @@ om.ui.createRatingWindow = (_args) ->
   win.add(ratingView)
   
   win.addEventListener 'ratingChanged', (e) ->
-    Otiga.API.info(e.currentValue)
+    Otiga.info(e.currentValue)
     false
   win
